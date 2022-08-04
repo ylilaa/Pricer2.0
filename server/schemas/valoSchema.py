@@ -3,9 +3,12 @@ from datetime import date
 from typing import Optional
 
 class valoBase(BaseModel):
-    dateValo : date
-    courbe : str
-    price : float
+    dateValo : date | None
+    courbe : str | None
+    price : float | None
+    class Config:
+        orm_mode = True
+
     
 
 class valoCreate(valoBase):

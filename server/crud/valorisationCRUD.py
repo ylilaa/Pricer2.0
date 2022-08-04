@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-
+from datetime import date
 from models import valoModel,echeancierModel
 from schemas import valoSchema,echeancierSchema
 from crud import echeancierCRUD
@@ -19,7 +19,7 @@ def create_titre_valorisation(db: Session, titre_code :str, valorisation: valoSc
 
 def get_valorisation_by_titre_code(db : Session, echeancier_code: str):
     db_echeancier = db.query(echeancierModel.Echeancier).filter(echeancierModel.Echeancier.titre_code == echeancier_code).first()
-    return db.query(valoModel.Valorisation).filter(valoModel.Valorisation.echeancier_id == db_echeancier.id).first()
+    return db.query(valoModel.Valorisation).filter(valoModel.Valorisation.echeancier_id == db_echeancier.id).all()
 
 
 def update_valorisation(db:Session,code:str,valorisation:valoSchema.valoUpdate):
@@ -33,8 +33,8 @@ def update_valorisation(db:Session,code:str,valorisation:valoSchema.valoUpdate):
     
 
 
-def delete_valorisation(code : str, db : Session):
+def delete_valorisation(code : str, db : Session, date : date):
     db_echeancier = echeancierCRUD.get_echeancier_by_titre_code(db,code)
-    db_valorisation = db.query(valoModel.Valorisation).filter(valoModel.Valorisation.echeancier_id == db_echeancier.id).first()
+    db_valorisation = db.query(valoModel.Valorisation).filter(valoModel.Valorisation.echeancier_id == db_echeancier.id and valoModel.Valorisation.dateValo == date).first()
     db.delete(db_valorisation)
     db.commit()
