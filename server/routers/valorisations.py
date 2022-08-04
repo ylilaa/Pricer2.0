@@ -1,5 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 from typing import List
+
+from datetime import date
 from schemas import valoSchema
 from crud import valorisationCRUD
 from db.db_setup import get_db, Session
@@ -25,10 +27,10 @@ def change_titre_valorisation(code : str, valorisation : valoSchema.valoBase, db
         raise HTTPException(status_code=404, detail="Cette valorisation n'existe pas")
 
 @router.delete("/titres/{titre_code}/echeancier/valorisation",response_model=valoSchema.valoBase)
-def destroy_titre_valorisation(code : str,db : Session=Depends(get_db)):
-    db_valorisation = valorisationCRUD.delete_valorisation(db,code)
+def destroy_titre_valorisation(code : str, date : date,db : Session=Depends(get_db)):
+    db_valorisation = valorisationCRUD.delete_valorisation(code,db,date)
     if db_valorisation:
-        return valorisationCRUD.delete_valorisation(code, db)
+        return valorisationCRUD.delete_valorisation(code, db, date)
     if db_valorisation is None:
         raise HTTPException(status_code=404, detail="Cette valorisation n'existe pas")
     
