@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
-from schemas import echeancierSchema, titreSchema
-from crud import echeancierCRUD
-from db.db_setup import get_db, Session
+from ..schemas import echeancierSchema, titreSchema
+from ..crud import echeancierCRUD
+from ..db.db_setup import get_db, Session
 router = APIRouter()
 
 

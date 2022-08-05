@@ -1,8 +1,7 @@
-from email.policy import default
 from sqlalchemy import DateTime, Column, Float,ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
-from db.db_setup import Base
-from models.echeancierModel import Echeancier
+from ..db.db_setup import Base
+from ..models.echeancierModel import Echeancier
 
 
 class Titre(Base):

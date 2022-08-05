@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
-from schemas import titreSchema
-from crud import titreCRUD
-from db.db_setup import get_db, Session
+from ..schemas import titreSchema
+from ..crud import titreCRUD
+from ..db.db_setup import get_db, Session
 router = APIRouter()
 
 @router.get("/titres/", response_model=list[titreSchema.titre])
@@ -16,7 +16,7 @@ def read_titre(titre_code : str, db : Session=Depends(get_db)):
         raise HTTPException(status_code=404, detail="Ce titre n'existe pas")
     return db_titre
 
-@router.post("/titres/",response_model=titreSchema.titre)
+@router.post("/titres/",response_model=titreSchema.titreCreate)
 def create_titre(titre: titreSchema.titreCreate, db: Session = Depends(get_db)):
     db_titre = titreCRUD.get_titre_by_code(db, titre_code=titre.code)
     if db_titre:

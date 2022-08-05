@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 
-from models import titreModel
-from schemas import titreSchema
+from ..models import titreModel
+from ..schemas import titreSchema
 
 def create_titre(db: Session, titre: titreSchema.titreCreate):
     db_titre = titreModel.Titre(code= titre.code,

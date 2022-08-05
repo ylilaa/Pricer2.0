@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends, HTTPException
 from typing import List
-from schemas import valoSchema
-from crud import valorisationCRUD
-from db.db_setup import get_db, Session
+from ..schemas import valoSchema
+from ..crud import valorisationCRUD
+from ..db.db_setup import get_db, Session
 router = APIRouter()
 
 @router.post("/titres/{titre_code}/echeancier/valorisation",response_model=valoSchema.valoCreate)

@@ -1,10 +1,6 @@
-from fastapi import FastAPI, Depends, HTTPException
-from sqlalchemy.orm import Session
-from db.db_setup import Base, SessionLocal
-from routers import titres,echeanciers,valorisations
-
-
-from db.db_setup import engine
+from fastapi import FastAPI
+from .db.db_setup import Base, SessionLocal, engine
+from .routers import titres,echeanciers,valorisations
 
 Base.metadata.create_all(bind=engine)
 

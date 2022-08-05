@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 
-from models import echeancierModel
-from schemas import echeancierSchema
+from ..models import echeancierModel
+from ..schemas import echeancierSchema
 
 
 def create_titre_echeancier(db: Session, code :str, echeancier: echeancierSchema.echeancierCreate):

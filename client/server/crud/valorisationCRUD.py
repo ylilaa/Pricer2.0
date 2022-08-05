@@ -1,8 +1,8 @@
 from sqlalchemy.orm import Session
 
-from models import valoModel,echeancierModel
-from schemas import valoSchema,echeancierSchema
-from crud import echeancierCRUD
+from ..models import valoModel,echeancierModel
+from ..schemas import valoSchema,echeancierSchema
+from ..crud import echeancierCRUD
 
 
 def create_titre_valorisation(db: Session, titre_code :str, valorisation: valoSchema.valoCreate):
