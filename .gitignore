@@ -2,3 +2,4 @@ __pycache__/
 __init__.*/
 client/server/db/db.*
 client/~$db_titres.xlsx
+client/db_echeanciers.xls
