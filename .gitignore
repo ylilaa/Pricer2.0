@@ -1,5 +1,11 @@
 __pycache__/
 __init__.*/
-client/server/db/db.*
+client/server/db/db.accdb
+client/server/db/db.laccdb
 client/~$db_titres.xlsx
+client/db_titres.xlsx
 client/db_echeanciers.xls
+client/~$db_echeanciers.xls
+client/*.env
+client/~$Copy of Pricing Manuel 25.03.22.xlsx
+client/Copy of Pricing Manuel 25.03.22.xlsx
