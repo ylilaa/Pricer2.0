@@ -1,3 +1,3 @@
-from utils import cloneManar
+from utils import cloneManarEcheanciers
 
-cloneManar()
+cloneManarEcheanciers()

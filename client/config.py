@@ -2,7 +2,8 @@ from pydantic import BaseSettings
 
 
 class AppConfig(BaseSettings):
-    db_name: str
+    db_titres: str
+    db_echeanciers : str
     api_url : str 
     
     class Config:

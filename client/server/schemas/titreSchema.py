@@ -16,8 +16,8 @@ class titreBase(BaseModel):
     amort : Optional[str] | None
     lastPriceKamal : Optional[float] | None
     lastPriceManar : Optional[float] | None
-    class config:
-        orm_mode : True
+    class Config:
+        orm_mode = True
 
 
 
@@ -25,6 +25,7 @@ class titreCreate(titreBase):
     pass
 
 class titreUpdate(BaseModel):
+    code : Optional[str] | None
     description : Optional[str] = None
     nominal : Optional[int] = None
     dateEmission : Optional[date] = None
@@ -35,8 +36,8 @@ class titreUpdate(BaseModel):
     amort : Optional[str] = None
     lastPriceKamal : Optional[float] = None 
     lastPriceManar : Optional[float] = None
-    class config:
-        orm_mode : True
+    class Config:
+        orm_mode = True
 
 
 class titre(titreBase):

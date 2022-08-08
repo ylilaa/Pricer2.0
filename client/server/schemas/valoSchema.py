@@ -6,6 +6,8 @@ class valoBase(BaseModel):
     dateValo : date
     courbe : str
     price : float
+    class Config:
+        orm_mode = True
     
 
 class valoCreate(valoBase):
@@ -15,6 +17,8 @@ class valoUpdate(BaseModel):
     dateValo : Optional[date]
     courbe : Optional[str]
     price : Optional[float]
+    class Config:
+        orm_mode = True
 
 
 class valo(valoBase):

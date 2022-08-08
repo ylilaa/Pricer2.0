@@ -12,7 +12,6 @@ class Echeancier(Base):
     capitalRestant = Column(Float)
     dateTombee = Column(DateTime)
     couponBrut = Column(Float)
-    source = Column(String)
     titre_code = Column(String, ForeignKey("titres.code"))
     titre = relationship("Titre", back_populates="echeancier")
     valorisations = relationship("Valorisation",back_populates="echeancier")
