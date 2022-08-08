@@ -30,8 +30,9 @@ def get_titre_by_id(db : Session, titre_id: int):
 def get_titres(db: Session, skip: int = 0, limit: int = 100):
     return db.query(titreModel.Titre).offset(skip).limit(limit).all()
 
-def update_titre(db : Session, code: str, titre: titreSchema.titreUpdate):
-    db_titre = db.query(titreModel.Titre).filter(titreModel.Titre.code == code).first()
+def update_titre(db : Session, code_titre: str, titre: titreSchema.titreUpdate):
+    db_titre = db.query(titreModel.Titre).filter(titreModel.Titre.code == code_titre).first()
+    db_titre.code = titre.code
     db_titre.description= titre.description
     db_titre.nominal= titre.nominal
     db_titre.dateEmission= titre.dateEmission
@@ -49,6 +50,6 @@ def delete_titre(code : str, db : Session):
     titre = db.query(titreModel.Titre).filter(titreModel.Titre.code == code).first()
     db.delete(titre)
     db.commit()
-
+    return "Titre supprimé de la base Access avec succès"
 
 

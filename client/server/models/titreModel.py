@@ -7,8 +7,8 @@ from ..models.echeancierModel import Echeancier
 class Titre(Base):
     __tablename__ = "titres"
 
-    id = Column(Integer, primary_key=True, index=True)
-    code = Column(String, unique=True, index=True)
+    id = Column(Integer, index=True)
+    code = Column(String, unique=True, primary_key=True)
     description = Column(String)
     nominal = Column(Integer)
     dateEmission = Column(DateTime)
@@ -20,5 +20,5 @@ class Titre(Base):
     lastPriceKamal = Column(Float)
     lastPriceManar = Column(Float)
 
-    echeancier = relationship("Echeancier",back_populates="titre",uselist=False)
+    echeancier = relationship("Echeancier",back_populates="titre")
     

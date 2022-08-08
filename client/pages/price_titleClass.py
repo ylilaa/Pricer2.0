@@ -53,7 +53,7 @@ class Price_title(tk.Frame):
 
         self.entryCode = customtkinter.CTkEntry(master=self.frame_left,
                                             placeholder_text="Code ISIN ou Maroclear")
-        self.entryCode.grid(row=2, column=0, pady=10, padx=20, sticky="w")
+        self.entryCode.grid(row=1, column=0, pady=10, padx=20, sticky="w")
 
         self.entryDateValo = customtkinter.CTkEntry(master=self.frame_left,
                                             placeholder_text="Date de valorisation")
@@ -143,7 +143,9 @@ class Price_title(tk.Frame):
 
         querymenu = Menu(menubar, tearoff=0, relief=RAISED)
         querymenu.add_command(
-            label="Actualiser les données depuis le fichier Manar", command=donothing)
+            label="Actualiser les données depuis le fichier Manar", command=cloneManarTitres)
+        querymenu.add_command(
+            label="Importer les écheanciers depuis le fichier Manar", command=cloneManarEcheanciers)
         menubar.add_cascade(label="Requêtes", menu=querymenu)
 
         helpmenu = Menu(menubar, tearoff=0, relief=RAISED)

@@ -12,6 +12,6 @@ class Valorisation(Base):
     price = Column(Float)
     echeancier_id = Column(Integer, ForeignKey("echeanciers.id"))
     
-    echeancier = relationship("Echeancier", back_populates="valorisations")
+    echeancier = relationship("Echeancier", back_populates="valorisations", uselist=True)
     
     
