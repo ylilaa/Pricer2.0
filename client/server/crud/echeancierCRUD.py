@@ -1,16 +1,21 @@
 from sqlalchemy.orm import Session
+from fastapi import HTTPException
 
 from ..models import echeancierModel
 from ..schemas import echeancierSchema
-
+from ..crud.titreCRUD import get_titre_by_code
 
 def create_titre_echeancier(db: Session, code :str, echeancier: echeancierSchema.echeancierCreate):
+    isCode = get_titre_by_code(db, code)
+    if isCode is None:
+        raise HTTPException(status_code=404, detail="Ce titre n'existe pas dans la base, cet échéancier sera ignoré ")
+        return {"code du titre": code}
+
     db_echeancier = echeancierModel.Echeancier(capitalAmorti = echeancier.capitalAmorti,
                                                 capitalRestant = echeancier.capitalRestant,
                                                 dateTombee = echeancier.dateTombee,
                                                 couponBrut = echeancier.couponBrut,
-                                                source = "Kamal",
-                                                titre_code = code,)
+                                                titre_code = echeancier.titre_code,)
                                                 
     db.add(db_echeancier)
     db.commit()
@@ -28,7 +33,6 @@ def update_echeancier(db:Session,code:str,echeancier:echeancierSchema.echeancier
     db_echeancier.capitalRestant = echeancier.capitalRestant
     db_echeancier.dateTombee = echeancier.dateTombee
     db_echeancier.couponBrut = echeancier.couponBrut
-    db_echeancier.source = "kamal"
     db.commit()
     db.refresh(db_echeancier)
     

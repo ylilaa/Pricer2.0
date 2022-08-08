@@ -9,7 +9,7 @@ class echeancierBase(BaseModel):
     capitalRestant : float | None
     dateTombee : date | None
     couponBrut : float | None
-    
+    titre_code : str | None
     class Config:
         orm_mode = True
 
@@ -28,10 +28,8 @@ class echeancierCreate(echeancierBase):
         orm_mode = True
 
 class echeancier(echeancierBase):
-    titre_code : str
-    source : str ="kamal" 
     valorisations : List[valo] 
     class Config:
         orm_mode = True
-
+    
     

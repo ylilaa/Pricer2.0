@@ -139,7 +139,9 @@ class Price_list(tk.Frame):
 
         querymenu = Menu(menubar, tearoff=0, relief=RAISED)
         querymenu.add_command(
-            label="Actualiser les données depuis le fichier Manar", command=donothing)
+            label="Actualiser les données depuis le fichier Manar", command=cloneManarTitres)
+        querymenu.add_command(
+            label="Importer les écheanciers depuis le fichier Manar", command=cloneManarEcheanciers)
         menubar.add_cascade(label="Requêtes", menu=querymenu)
 
         helpmenu = Menu(menubar, tearoff=0, relief=RAISED)
